@@ -6,9 +6,139 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(217, 217, 233);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: rgb(95, 89, 89);
+}
+
+.userRow{
+  margin: auto;
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.userRow :hover{
+background-color: #fefefebb;
+}
+
+.section{
+  display: block;
+  width:12.3%; 
+}
+
+#email{
+  width:22%;
+}
+#emailType{
+  width:5%;
+}
+
+hr{
+  background-color: rgb(148, 138, 138);
+  margin: auto;
+  width: 95%;
+}
+
+.head{
+  background-color: rgb(235, 180, 41);
+  height: 3vw;
+}
+
+.modal {
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #000000d8;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 40%;
+  color: antiquewhite;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.update-button{
+  background-color:  rgb(235, 180, 41);
+  cursor: pointer;
+  height: 2vw;
+  border-radius: 5px;
+  text-align: center;
+  color: #000;
+}
+.update-button :hover{
+  background-color:  rgb(172, 134, 41);
+}
+
+.input{
+  -webkit-appearance: none;
+    border: 0;
+    font-family: inherit;
+    padding: 12px 0;
+    font-size: 16px;
+    font-weight: 500;
+    border-bottom: 2px solid #C8CCD4;
+    background: none;
+    border-radius: 0;
+    color:white;
+    transition: all .15s ease;
+}
+
+.all-input{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
