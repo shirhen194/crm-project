@@ -2,25 +2,27 @@ import React, { Component } from 'react';
 
 
 class UserRow extends Component {
-    showDialog=()=>{
-    this.props.showDialog()
+    showDialog=(e)=>{
+    let id=e.target.id
+    this.props.showDialog(id)
     }
 
     render() {
         let user=this.props.user
         let firstName=user.name.split(" ")[0]
         let surName=user.name.split(" ")[1]
-        let firstContact=user.firstContact
+        let date= new Date(user.firstContact)
+        let firstDate = date.toLocaleDateString()
         return (
         <div>
-            <div className="userRow" onClick={this.showDialog}>
-            <div className="section" id="name">{firstName}</div>
-            <div className="section" id="name">{surName}</div>
-            <div className="section" id="country"> {user.country}</div>
-            <div className="section" id="firstContact"> {firstContact}</div>  
-            <div className="section" id="emailType"> {user.emailType}</div>
-            <div className="section" id="sold">   {user.sold ? <span>V</span> : <span>-</span>} </div> 
-            <div className="section" id="owner"> {user.owner} </div>
+            <div className="userRow" id={user.id} onClick={this.showDialog}>
+            <div className="section" id={user.id}>{firstName}</div>
+            <div className="section" id={user.id}>{surName}</div>
+            <div className="section" id={user.id}> {user.country}</div>
+            <div className="section" id={user.id}> {firstDate}</div>  
+            <div className="section" id={user.id}> {user.emailType}</div>
+            <div className="section" id={user.id}>   {user.sold ? <span>V</span> : <span>-</span>} </div> 
+            <div className="section" id={user.id}> {user.owner} </div>
             </div>
             <hr></hr>
             </div>

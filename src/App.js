@@ -3,7 +3,7 @@ import './App.css';
 import {BrowserRouter as Router, Link, Route} from 'react-router-dom'
 import Clients from './components/clients/Clients'
 import Actions from './components/actions/Actions'
-import Analytics from './components/Analytics'
+import Analytics from './components/analytics/Analytics'
 
 class App extends Component {
 

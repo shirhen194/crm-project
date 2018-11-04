@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import UserRow from './UserRow'
 import TableHeader from './TableHeader'
+import Search from './Search'
+import Dialog from './Dialog'
+const axios = require('axios')
 
 class Clients extends Component {
 
@@ -9,39 +12,26 @@ class Clients extends Component {
         this.state = {
             users: [],
             dialog:false,
-            nameInput:"",
-            surnameInput:'',
-            countryInput:''
+            searchedUsers:[],
+            dialogUser:{},
+            loader:true
         }
     }
 
-    componentDidMount = () => {
-        setTimeout(() => {
-            let data = require('../../data/data')
-            this.setState({ users:data })
-        }, 100)
-
+    componentDidMount = async () => {
+            let data = await axios.get("http://localhost:4000/clients")
+            console.log(data)
+            this.setState({ users:data.data,searchedUsers:data.data, loader:false})
     }
 
-    showDialog=()=>{
-        this.setState({ dialog: !this.state.dialog })
+
+
+    showDialog=(id)=>{
+        let users=[...this.state.users]
+        let dialogUser=users.find((u)=> u.id===id)
+        this.setState({ dialog: !this.state.dialog, dialogUser:dialogUser })
     }
 
-    dialog=()=>{
-        if(this.state.dialog){
-            return(
-                <div id="myModal" className="modal">
-                <div className="modal-content">
-                    <span className="close" onClick={this.showDialog}>&times;</span>
-                    <p className="all-input">Name:        <input className="input" type="text" name="nameInput" value={this.state.nameInput} onChange={this.inputChange}></input></p>
-                    <p className="all-input">Surname:     <input className="input" type="text" name="surnameInput" value={this.state.surnameInput} onChange={this.inputChange}></input></p>
-                    <p className="all-input">Country:     <input className="input" type="text" name="countryInput" value={this.state.countryInput} onChange={this.inputChange}></input></p>
-                    <div className="update-button">Update</div>
-                </div>
-            </div>
-            )
-        }
-    }
 
     inputChange=(event)=>{
         const target = event.target;
@@ -53,18 +43,50 @@ class Clients extends Component {
         });
     }
 
-    render() {
-        return (
-            <div>
-            {this.dialog()}
-                <TableHeader />
-                {this.state.users.map(u => {
-                    return (
-                        <UserRow user={u} key={u._id} showDialog={this.showDialog}/>
-                    )
-                })}
-            </div>
+    updateUser= async(name, country, id)=>{
+        let reqContent={name:name,country:country}
+        await axios
+        .put(
+            `http://localhost:4000/changeClient/${id}`, 
+            reqContent,
         )
+        .then(r => console.log(r.status))
+        .catch(e => console.log(e));
+    }
+
+    // search=(searchWord,catagory)=>{
+    //     if(!catagory||!searchWord){
+    //         return;
+    //     }
+    //     else{
+    //         let users=[...this.state.users]
+    //         let searchedUsers=users.find((u)=>
+    //         {u[catagory].toLowerCase().includes(searchWord)})
+    //         this.setState({searchedUsers:searchedUsers})
+    //     }
+    // }
+
+
+
+    render() {
+        if(this.state.loader){
+            return(<div className="spinner"></div>);
+        }
+        else{
+            return (
+                <div>
+                {this.state.dialog? <Dialog dialogUser={this.state.dialogUser} updateUser={this.updateUser} showDialog={this.showDialog} /> : null}
+                <Search search={this.search} />
+                    <TableHeader />
+                    {this.state.searchedUsers.map((u,i) => {
+                        return (
+                            <UserRow user={u} key={i} showDialog={this.showDialog}/>
+                        )
+                    })}
+                </div>
+            )
+        }
+       
     }
 }
 
