@@ -1,6 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-const SERVER_PORT = 4000;
+const SERVER_PORT = process.env.PORT || 4000;
 const api = require('./server/apis/clients-api')
 
 var app = express();
@@ -15,9 +15,9 @@ app.use(function (req, res, next) {
     next()
 })
 app.use('/', api)
-app.use(express.static('./build'));
+app.use(express.static('build'));
 
-app.listen(process.env.PORT || SERVER_PORT, () => {
+app.listen(SERVER_PORT, () => {
     console.log("Server started on port " + SERVER_PORT);
 });
 
