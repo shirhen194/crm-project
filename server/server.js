@@ -16,7 +16,7 @@ app.use(function (req, res, next) {
 })
 app.use('/', api)
 
-app.listen(SERVER_PORT, () => {
+app.listen(process.env.PORT || '8080', () => {
     console.log("Server started on port " + SERVER_PORT);
 });
 

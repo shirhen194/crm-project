@@ -14,7 +14,9 @@ class Clients extends Component {
             dialog:false,
             searchedUsers:[],
             dialogUser:{},
-            loader:true
+            loader:true,
+            search:'',
+            catagory:'name'
         }
     }
 
@@ -54,14 +56,34 @@ class Clients extends Component {
         .catch(e => console.log(e));
     }
 
-    // search=(searchWord,catagory)=>{
-    //     if(!catagory||!searchWord){
-    //         return;
+    SearchChange=(event)=>{
+        const target = event.target;
+        const value = target.value;
+        
+        this.setState({
+            search: value
+        } );
+    }
+
+    catagoryChange=(event)=>{
+        const target = event.target;
+        const value = target.value;
+    
+        this.setState({
+            catagory: value
+        } );
+    }
+
+    // search=()=>{
+    //     debugger;
+    //     if(!this.state.catagory||!this.state.search){
+    //         this.setState({searchedUsers:[...this.state.users]})
     //     }
     //     else{
     //         let users=[...this.state.users]
-    //         let searchedUsers=users.find((u)=>
-    //         {u[catagory].toLowerCase().includes(searchWord)})
+    //         let searchedUsers=users.filter((u)=>
+    //         {})
+    //         console.log(searchedUsers)
     //         this.setState({searchedUsers:searchedUsers})
     //     }
     // }
@@ -76,13 +98,14 @@ class Clients extends Component {
             return (
                 <div>
                 {this.state.dialog? <Dialog dialogUser={this.state.dialogUser} updateUser={this.updateUser} showDialog={this.showDialog} /> : null}
-                <Search search={this.search} />
+                <Search search={this.search} catagoryChange={this.catagoryChange} SearchChange={this.SearchChange}/>
                     <TableHeader />
-                    {this.state.searchedUsers.map((u,i) => {
+                    {this.state.users.map((u,i) => {
+                     if ((u[this.state.catagory]|| "").toString().toLowerCase().includes(this.state.catagory=="sold" ? "true" : this.state.search)){
                         return (
                             <UserRow user={u} key={i} showDialog={this.showDialog}/>
                         )
-                    })}
+                       }   })}
                 </div>
             )
         }

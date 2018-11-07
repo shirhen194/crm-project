@@ -100,9 +100,22 @@ router.post('/newClient', function (req, res) {
             
  //get clients in the last 30 days    
  router.get('/clientsthismonth', function (req, res) {
-    Client.findAll({}).then(clients => {
+     let today =new Date()
+    today.setMonth(today.getMonth() - 3)
+    let now=new Date()
+    let beforeMonth=today.toISOString().slice(0, 19).replace('T', ' ')
+    let thisTime=now.toISOString().slice(0, 19).replace('T', ' ')
+    
+    Client.findAll({
+        where :{
+            sold:true,
+            firstContact: {
+            $between: [beforeMonth, thisTime]
+        }
+    }
+    }).then(clients => {
         let data=clients.map((c)=>{
-            return c.dataValues
+            return c.dataValues.firstContact
         })
         res.send(data)
     }).catch((err)=>res.send(err))

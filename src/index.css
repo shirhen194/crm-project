@@ -1,9 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color:#ecf0f1;
@@ -107,7 +105,7 @@ hr{
 .update-button{
   background-color:  rgb(235, 180, 41);
   cursor: pointer;
-  height: 2vw;
+  height: 3%;
   width: 20vw;
   border-radius: 5px;
   text-align: center;
@@ -185,6 +183,11 @@ hr{
   width: auto;
   height:100px;
   border-radius: 50%;
+  box-shadow: 5px 10px 8px 10px #888888;
+}
+
+#icon div:hover{
+  transform: rotate(20deg);
 }
 
 .container {
@@ -192,12 +195,61 @@ hr{
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   padding: 10px;
-  width: 800px;
-  height: 800px;
+  width: 30%;
+  height: 30%;
 }
 
 #charts{
-  width:50%;
+  height: 80vh;
+  display: grid;
+  /* grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr ; */
+  grid-template-areas: 
+  "c1 c2"
+  "c3 c4";
+  grid-gap: 20px;
+}
+
+.TopEmployeesChart{
+  grid-area: c1;
+}
+
+.SalesByChart{
+  grid-area: c2;
+}
+
+.SalesSinceChart{
+  grid-area: c3;
+}
+
+.FirstContactPieChart{
+  grid-area: c4;
+}
+
+.badge{
   display: flex;
   flex-direction: row;
 }
+
+.icon{
+  border-radius: 50%;
+  font-size: 70px;
+  height: 70px;
+  padding: 20px;
+  color: white;
+  margin: auto;
+  margin-right: 10px;
+  box-shadow: 10px 10px 5px #aaaaaa;
+}
+
+.recharts-responsive-container{
+  min-height:200px;
+}
+
+.chart{background-color: #2ecc71;}
+
+.envelope{background-color: #3498db;}
+
+.user-circle{background-color: #e74c3c;}
+
+.globe-americas{background-color: #f1c40f;}

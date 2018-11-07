@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BarChart, Bar, XAxis, YAxis, Cell, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
+import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Cell, CartesianGrid, Tooltip } from 'recharts';
 
 class TopEmployeesChart extends Component {
 
@@ -20,7 +20,6 @@ class TopEmployeesChart extends Component {
             }
             employeesArrwithObj.push({ ...employee })
         }
-        console.log(employeesArrwithObj)
         return employeesArrwithObj
 
     }
@@ -38,11 +37,10 @@ class TopEmployeesChart extends Component {
     getBestThreeEmployees = () => {
         let employeesArrwithObj = this.generateEmloyees()
         let bestOne = this.getBestEmployee(employeesArrwithObj)
-        let bestSeceondArr = employeesArrwithObj.filter((e) => e != bestOne)
+        let bestSeceondArr = employeesArrwithObj.filter((e) => e !== bestOne)
         let bestSeceond = this.getBestEmployee(bestSeceondArr)
         let bestThirdArr = employeesArrwithObj.filter((e) => (e !== bestOne && e !== bestSeceond))
         let bestThird = this.getBestEmployee(bestThirdArr)
-        console.log(bestOne.name + " " + bestSeceond.name + " " + bestThird.name)
         let bestThree = [bestOne, bestSeceond, bestThird]
         return bestThree
     }
@@ -62,25 +60,28 @@ class TopEmployeesChart extends Component {
         const data = this.getBestThreeEmployees()
         return (
             <div className="TopEmployeesChart">
-                <div className="chart-headline">Top Employees</div>
-                <BarChart width={400} height={300} data={data}
-                    margin={{ top: 20, right: 0, left: 0, bottom: 25 }} layout="vertical">
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis type="number" dataKey="count" domain={[0, 'dataMax']} />
-                    <YAxis type="category" dataKey="name" fontFamily="sans-serif" />
-                    <Tooltip />
-                    <Bar
-                        dataKey="count"
-                        barSize={20}
-                        fontFamily="sans-serif">
-                        {
-                            data.map((entry, index) => (
-                                <Cell key={index} fill='#003f5c' />
-                            ))
-                        }
-                    </Bar>
-                </BarChart>
-           
+                    <h4>Top Employees</h4>
+                    <div>
+                <ResponsiveContainer width='100%' >
+                    <BarChart width={400} height={300} data={data}
+                        margin={{ top: 20, right: 0, left: 0, bottom: 25 }} layout="vertical">
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis type="number" dataKey="count" domain={[0, 'dataMax']} />
+                        <YAxis type="category" dataKey="name" fontFamily="sans-serif" />
+                        <Tooltip />
+                        <Bar
+                            dataKey="count"
+                            barSize={20}
+                            fontFamily="sans-serif">
+                            {
+                                data.map((entry, index) => (
+                                    <Cell key={index} fill='#003f5c' />
+                                ))
+                            }
+                        </Bar>
+                    </BarChart>
+                </ResponsiveContainer>
+                </div>
             </div>
         )
     }

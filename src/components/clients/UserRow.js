@@ -20,7 +20,7 @@ class UserRow extends Component {
             <div className="section" id={user.id}>{surName}</div>
             <div className="section" id={user.id}> {user.country}</div>
             <div className="section" id={user.id}> {firstDate}</div>  
-            <div className="section" id={user.id}> {user.emailType}</div>
+            <div className="section" id={user.id}> {user.emailType ? user.emailType : <span>.</span>}</div>
             <div className="section" id={user.id}>   {user.sold ? <span>V</span> : <span>-</span>} </div> 
             <div className="section" id={user.id}> {user.owner} </div>
             </div>
