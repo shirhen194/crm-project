@@ -21,6 +21,7 @@ class Clients extends Component {
     }
 
     componentDidMount = async () => {
+        // axios.get("http://localhost:4000/clients").then(()=>console.log("lo hara")).catch((err)=>console.log("hara"))
             let data = await axios.get("http://localhost:4000/clients")
             console.log(data)
             this.setState({ users:data.data,searchedUsers:data.data, loader:false})
@@ -30,7 +31,7 @@ class Clients extends Component {
 
     showDialog=(id)=>{
         let users=[...this.state.users]
-        let dialogUser=users.find((u)=> u.id===id)
+        let dialogUser=users.find((u)=> u._id===id)
         this.setState({ dialog: !this.state.dialog, dialogUser:dialogUser })
     }
 
@@ -52,7 +53,9 @@ class Clients extends Component {
             `http://localhost:4000/changeClient/${id}`, 
             reqContent,
         )
-        .then(r => console.log(r.status))
+        .then(async () => {
+        let data = await axios.get("http://localhost:4000/clients")
+        this.setState({ users:data.data,searchedUsers:data.data})})
         .catch(e => console.log(e));
     }
 

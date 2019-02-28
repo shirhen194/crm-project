@@ -9,7 +9,7 @@ class AddClient extends Component {
             surNameInput:'',
             countryInput:'',
             ownerInput:'',
-            emailType:'',
+            emailType:"A",
             newIdsArray:[]
         }
     }
@@ -51,7 +51,7 @@ class AddClient extends Component {
             }
         var id = this.generateid()
         let newClient={
-            id:id,
+            _id:id,
             name:this.state.nameInput+ " "+this.state.surNameInput,
             firstContact: new Date().toISOString().slice(0, 19).replace('T', ' '),
             emailType:this.state.emailType,

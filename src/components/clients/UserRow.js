@@ -15,14 +15,14 @@ class UserRow extends Component {
         let firstDate = date.toLocaleDateString()
         return (
         <div>
-            <div className="userRow" id={user.id} onClick={this.showDialog}>
-            <div className="section" id={user.id}>{firstName}</div>
-            <div className="section" id={user.id}>{surName}</div>
-            <div className="section" id={user.id}> {user.country}</div>
-            <div className="section" id={user.id}> {firstDate}</div>  
-            <div className="section" id={user.id}> {user.emailType ? user.emailType : <span>.</span>}</div>
-            <div className="section" id={user.id}>   {user.sold ? <span>V</span> : <span>-</span>} </div> 
-            <div className="section" id={user.id}> {user.owner} </div>
+            <div className="userRow" id={user._id} onClick={this.showDialog}>
+            <div className="section" id={user._id}>{firstName}</div>
+            <div className="section" id={user._id}>{surName}</div>
+            <div className="section" id={user._id}> {user.country}</div>
+            <div className="section" id={user._id}> {firstDate}</div>  
+            <div className="section" id={user._id}> {user.emailType ? user.emailType : <span>.</span>}</div>
+            <div className="section" id={user._id}>   {user.sold ? <span>V</span> : <span>-</span>} </div> 
+            <div className="section" id={user._id}> {user.owner} </div>
             </div>
             <hr></hr>
             </div>

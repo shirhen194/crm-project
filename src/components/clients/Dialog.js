@@ -10,7 +10,7 @@ class Dialog extends Component {
             nameInput: firstName,
             surnameInput: surName,
             countryInput: this.props.dialogUser.country,
-            id:this.props.dialogUser.id
+            id:this.props.dialogUser._id
         }
     }
 

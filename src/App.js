@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Link, Route} from 'react-router-dom'
 import Clients from './components/clients/Clients'
 import Actions from './components/actions/Actions'
 import Analytics from './components/analytics/Analytics'
+import Home from './components/Home'
 
 class App extends Component {
 
@@ -21,7 +22,9 @@ class App extends Component {
           <Route path="/clients" exact component={Clients} />
           <Route path="/actions" exact component={Actions}/>
           <Route path="/analytics" exact component={Analytics}/>
+          <Route path="/" exact component={Home}/>
         {/* Routes go here ^ */}
+
     </div>
     </Router>
     );

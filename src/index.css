@@ -239,7 +239,7 @@ hr{
   color: white;
   margin: auto;
   margin-right: 10px;
-  box-shadow: 10px 10px 5px #aaaaaa;
+  box-shadow: 3px 3px 5px #aaaaaa;
 }
 
 .recharts-responsive-container{
@@ -253,3 +253,12 @@ hr{
 .user-circle{background-color: #e74c3c;}
 
 .globe-americas{background-color: #f1c40f;}
+
+#home{ 
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+size: 500px
+}

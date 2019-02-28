@@ -40,10 +40,14 @@
     "jest": "23.6.0",
     "jest-pnp-resolver": "1.0.1",
     "jest-resolve": "23.6.0",
+    "jquery": "^3.3.1",
+    "jsdom": "^13.2.0",
     "mini-css-extract-plugin": "0.4.3",
     "mobx": "^5.5.2",
     "mobx-react": "^5.3.6",
+    "mongoose": "^5.4.6",
     "mysql2": "^1.6.1",
+    "open-accessibility": "^1.0.0",
     "optimize-css-assets-webpack-plugin": "5.0.1",
     "pnp-webpack-plugin": "1.1.0",
     "postcss-flexbugs-fixes": "4.1.0",
@@ -136,5 +140,17 @@
     "presets": [
       "react-app"
     ]
-  }
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "insert-data.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shirhen194/crm-project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shirhen194/crm-project/issues"
+  },
+  "homepage": "https://github.com/shirhen194/crm-project#readme"
 }

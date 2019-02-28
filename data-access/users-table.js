@@ -1,34 +1,15 @@
-const connection=require('./da') 
-const Sequelize = require('sequelize');
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
-const Client = connection.define("client", {
-   id:{
-       type:Sequelize.STRING,
-       primaryKey: true
-   },
-   name:{
-       type:Sequelize.STRING
-   },
-   email:{
-    type:Sequelize.STRING
-   },
-   firstContact:{
-       type:Sequelize.DATE
-   },
-   emailType:{
-       type:Sequelize.STRING
-   },
-   sold:{
-       type:Sequelize.BOOLEAN
-   },
-   owner:{
-       type:Sequelize.STRING
-    },
-   country:{
-       type:Sequelize.STRING
-   } 
-})
+const clientSchema = new Schema({
+    name: String,
+    email: String,
+    firstContact: String,
+    emailType: String,
+    sold: Boolean,
+    owner: String,
+    country: String
+});
 
-// Client.sync({force:true})
-
-module.exports =(Client);
+const Client = mongoose.model("Client", clientSchema)
+module.exports = Client
